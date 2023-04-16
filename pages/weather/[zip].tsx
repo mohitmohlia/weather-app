@@ -5,34 +5,7 @@ import { useRouter } from "next/router";
 import Icon from "../../utils/icons";
 import Image from "next/image";
 import { InferGetServerSidePropsType } from "next/types";
-const Card = ({ data }: { data: any }) => {
-  const sunrise = convertUnixToDate(data.city.sunrise);
-  const sunset = convertUnixToDate(data.city.sunset);
-  const temp =
-    data.list.reduce((acc: any, el: any) => acc + el.main.temp, 0) /
-    data.list.length;
-  console.log(data);
-  return (
-    <div className="bg-zinc-800 h-96 w-96 rounded-xl p-4 flex flex-col justify-evenly">
-      <div className="heading flex items-baseline p-3">
-        <h2 className="text-5xl font-semibold">{data.city.name},</h2>
-        <h2 className="text-xl font-medium ml-2">{data.city.country}</h2>
-      </div>
-      <h3 className="text-4xl pl-3 text-orange-600">{temp.toFixed(0)}° F</h3>
-      <div className="text-2xl pl-3 mt-2">
-        <div className="flex items-center">
-          <Image src="/sunrise.svg" height={50} width={50} alt="sunrise" />
-          <h1 className="ml-4">{sunrise}</h1>
-        </div>
-        <div className="flex items-center">
-          <Image src="/sunset.svg" height={50} width={50} alt="sunset" />
-          <h1 className="ml-4">{sunset}</h1>
-        </div>
-        <h1 className="mt-4">Total Population : {data.city.population}</h1>
-      </div>
-    </div>
-  );
-};
+
 function WeatherZip({
   data,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -105,7 +78,34 @@ function WeatherZip({
     </div>
   );
 }
+const Card = ({ data }: { data: any }) => {
+  const sunrise = convertUnixToDate(data.city.sunrise);
+  const sunset = convertUnixToDate(data.city.sunset);
+  const temp =
+    data.list.reduce((acc: any, el: any) => acc + el.main.temp, 0) /
+    data.list.length;
 
+  return (
+    <div className="bg-zinc-800 h-96 w-96 rounded-xl p-4 flex flex-col justify-evenly">
+      <div className="heading flex items-baseline p-3">
+        <h2 className="text-5xl font-semibold">{data.city.name},</h2>
+        <h2 className="text-xl font-medium ml-2">{data.city.country}</h2>
+      </div>
+      <h3 className="text-4xl pl-3 text-orange-600">{temp.toFixed(0)}° F</h3>
+      <div className="text-2xl pl-3 mt-2">
+        <div className="flex items-center">
+          <Image src="/sunrise.svg" height={50} width={50} alt="sunrise" />
+          <h1 className="ml-4">{sunrise}</h1>
+        </div>
+        <div className="flex items-center">
+          <Image src="/sunset.svg" height={50} width={50} alt="sunset" />
+          <h1 className="ml-4">{sunset}</h1>
+        </div>
+        <h1 className="mt-4">Total Population : {data.city.population}</h1>
+      </div>
+    </div>
+  );
+};
 export default WeatherZip;
 
 export async function getServerSideProps(context: { params: any }) {
