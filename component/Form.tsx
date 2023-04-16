@@ -11,7 +11,9 @@ const Form = ({
   const [zip, setZip] = useState(searchedZip);
   const handleFormSubmit = (e: FormEvent) => {
     e.preventDefault();
-    router.replace(`/weather/${zip}`);
+    if (zip) {
+      router.replace(`/weather/${zip}`);
+    }
   };
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const Form = ({
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="flex m-4 p-4 w-full justify-center"
+      className="flex m-4 p-4 w-full justify-center lg:flex-row flex-col"
     >
       <input
         ref={inputRef}
