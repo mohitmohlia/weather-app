@@ -29,7 +29,7 @@ const Form = ({
     >
       <input
         ref={inputRef}
-        className="w-full rounded-lg text-zinc-50 text-4xl outline-none bg-zinc-800 h-36 p-4"
+        className="w-full rounded-lg text-zinc-50 text-4xl outline-none  bg-zinc-50 dark:bg-zinc-800 h-36 p-4"
         type="text"
         onChange={(e) => setZip(e.target.value)}
         value={zip}

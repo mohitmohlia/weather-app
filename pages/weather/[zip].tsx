@@ -86,7 +86,7 @@ const Card = ({ data }: { data: any }) => {
     data.list.length;
 
   return (
-    <div className="bg-zinc-800 h-96 w-96 rounded-xl p-4 flex flex-col justify-evenly">
+    <div className="bg-zinc-50 dark:bg-zinc-800 h-96 w-96 rounded-xl p-4 flex flex-col justify-evenly">
       <div className="heading flex items-baseline p-3">
         <h2 className="text-5xl font-semibold">{data.city.name},</h2>
         <h2 className="text-xl font-medium ml-2">{data.city.country}</h2>
