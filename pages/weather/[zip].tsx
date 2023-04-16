@@ -45,7 +45,10 @@ function WeatherZip({
               </div>
               <ul className="flex flex-col py-12 w-full overflow-auto">
                 {data.list.map((item: any) => (
-                  <li key={item.dt} className="p-8 min-w-[200px] border-b-2">
+                  <li
+                    key={item.dt}
+                    className="p-8 min-w-[200px] border-b-2 dark:border-zinc-50 border-zinc-700"
+                  >
                     <div className="flex justify-evenly">
                       <div className="text-2xl flex-1 p-4">
                         {moment(item.dt_txt).calendar()}
